@@ -38,7 +38,10 @@ export const StyledQuemsomos = styled.main`
     section div{
         background-color: #303030da;
         border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 4vh;
         max-width: 500px;
+        animation: paragrafo 600ms;
     }
 
     h1{
@@ -46,6 +49,7 @@ export const StyledQuemsomos = styled.main`
         padding: 10px;
         margin: 5px;
         margin-bottom: -2.5vh;
+        font-size: 3em;
         /* border: 1px solid red; */
         /* background-color: #ddd; */
     }

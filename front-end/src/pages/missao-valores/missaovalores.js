@@ -1,9 +1,9 @@
-import { StyledMissao } from "../../components/Styles/Styledmissaoval";
+import { StyledPadrao } from "../../components/Styles/StyledPadrao";
 
 export default function Missaovalores(){
 
     return(
-        <StyledMissao>
+        <StyledPadrao>
             <div>
                 <h1>Missão e Valores</h1>
                 <p>
@@ -11,6 +11,6 @@ export default function Missaovalores(){
 Nossos valores são os princípios de relacionamentos transparentes e respeito a todos clientes e colaboradores.
                 </p>
             </div>
-        </StyledMissao>
+        </StyledPadrao>
     )
 }

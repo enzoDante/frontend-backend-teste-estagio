@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import { CSSGeral } from "./components/Styles/CSSGlobal";
+import Contato from "./pages/Contato/Contato";
+import Home from "./pages/Home/Home";
 import Missaovalores from "./pages/missao-valores/missaovalores";
+import Solucoes from "./pages/NossasSolucoes/Solucoes";
 import Quemsomos from "./pages/Quem-somos/Quemsomos";
 
 function App() {
@@ -12,12 +15,12 @@ function App() {
 
 
       <Routes>
-        <Route exact='true' path="/" element={''}></Route>
+        <Route exact='true' path="/" element={<Home />}></Route>
 
         <Route path="/quem-somos" element={<Quemsomos />}></Route>
         <Route path="/missao-e-valores" element={ <Missaovalores />}></Route>
-        <Route path="/solucoes" element={''}></Route>
-        <Route path="/contato" element={''}></Route>
+        <Route path="/solucoes" element={<Solucoes />}></Route>
+        <Route path="/contato" element={<Contato />}></Route>
 
       </Routes>
 

@@ -6,7 +6,7 @@ export default function Header(){
 
     return(
         <StyledHeader>
-            <h1>Zeta</h1>
+            <h1><Link to={'/'}>Zeta</Link></h1>
             <Rotas />
             <div></div>
         </StyledHeader>
