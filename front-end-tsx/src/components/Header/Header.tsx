@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
+import { StyledHeader } from "../Styles/StyledHeader";
 
 
 export default function Header(){
 
-    
+    return(
+        <StyledHeader>
+            <h1><Link to={'/'}>Zeta</Link></h1>
+            <Rotas />
+            <div></div>
+        </StyledHeader>
+    )
 }
 
 
