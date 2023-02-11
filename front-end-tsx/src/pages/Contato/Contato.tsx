@@ -17,14 +17,16 @@ export default function Contato(){
     const changeValues = (e:React.FormEvent<HTMLInputElement>) => {
         setValues({...values, [e.currentTarget.name]: e.currentTarget.value})
         let msg = ' '
-        let x = 'a'
-        if(e.currentTarget.name === 'email')
-            x = ValidarEmail(e)
+        
+        if(e.currentTarget.name === 'email' && e.currentTarget.value.indexOf('@') < 0)
+            msg = 'Deve conter @'
         else
-            if(e.currentTarget.value.length < 10)
-                msg = 'Preenche o campo corretamente!'
+            if(e.currentTarget.name === 'telefone' && e.currentTarget.value.length < 14)
+                msg = 'Complete seu número de telefone!'
+            else
+                if(e.currentTarget.value.length < 5)
+                    msg = 'Preenche o campo corretamente!'
 
-                console.log(x)
         setErroValidation({...erroValidation, [e.currentTarget.name]: msg})
         
         console.log(values)
@@ -32,7 +34,7 @@ export default function Contato(){
 
     const SubmitForm = (e:React.FormEvent) => {
         e.preventDefault()
-        if(erroValidation.nome === ' ' && erroValidation.email === ' ' && erroValidation.telefone === ''){
+        if(erroValidation.nome === ' ' && erroValidation.email === ' ' && erroValidation.telefone === ' '){
             console.log('enviado')
         }
         console.log('teste')
@@ -83,9 +85,4 @@ export default function Contato(){
             </form>
         </StyledContato>
     )
-}
-
-const ValidarEmail = (e:React.FormEvent<HTMLInputElement>) => {
-    
-    return 'testasdasdsade'
 }
