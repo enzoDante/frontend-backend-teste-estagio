@@ -18,14 +18,14 @@ export default function Contato(){
         setValues({...values, [e.currentTarget.name]: e.currentTarget.value})
         let msg = ' '
         
-        if(e.currentTarget.name === 'email' && e.currentTarget.value.indexOf('@') < 0)
-            msg = 'Deve conter @'
+        if(e.currentTarget.name === 'email' && (e.currentTarget.value.indexOf('@') < 0 || e.currentTarget.value.indexOf('.') < 0))
+            msg = 'Deve conter @ e .'
         else
             if(e.currentTarget.name === 'telefone' && e.currentTarget.value.length < 14)
                 msg = 'Complete seu número de telefone!'
             else
                 if(e.currentTarget.value.length < 5)
-                    msg = 'Preenche o campo corretamente!'
+                    msg = 'Mínimo de 5 caracteres!'
 
         setErroValidation({...erroValidation, [e.currentTarget.name]: msg})
         
@@ -65,21 +65,22 @@ export default function Contato(){
     return(
         <StyledContato>
             <form action="" method="post" autoComplete="off" onSubmit={SubmitForm}>
+                <h2>Cadastro</h2>
                 <div>
                     <label htmlFor="nome">Nome:</label>
                     <input type="text" name="nome" id="nome" onChange={changeValues}/>
-                    <p>{erroValidation.nome}</p>
+                    <p>{erroValidation.nome}</p><br />
                 </div>
                 <div>
                     <label htmlFor="email">E-mail:</label>
-                    <input type="email" name="email" id="email" onChange={changeValues}/>
-                    <p>{erroValidation.email}</p>
+                    <input type="email" name="email" id="email" onChange={changeValues} placeholder='email@gmail.com' />
+                    <p>{erroValidation.email}</p><br />
                 </div>
                 <div>
                     <label htmlFor="telefone">Telefone:</label>
-                    <input type="tel" name="telefone" id="telefone" onChange={formatTel}/>
+                    <input type="tel" name="telefone" id="telefone" onChange={formatTel} placeholder='(xx) xxxxx-xxxx' />
                     {/* e => {formatTel(e); changeValues(e)} dentro de onChange */}
-                    <p>{erroValidation.telefone}</p>
+                    <p>{erroValidation.telefone}</p><br />
                 </div>
                 <button type="submit">Cadastrar</button>
             </form>
