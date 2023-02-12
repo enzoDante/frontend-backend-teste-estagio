@@ -33,7 +33,7 @@ export const StyledPadrao = styled.main`
         from {opacity: 0; transform: translateY(50px);}
         to {opacity:1 ; transform: translateY(0px);}
     }
-
+    //=========missoes e valores====================
     #parentGrid{
         border: 2px solid transparent;
         margin: 0px -20px -20px -20px;
@@ -86,9 +86,47 @@ export const StyledPadrao = styled.main`
             to {opacity:1 ; transform: translateY(0px);}
         }
     }
+    //===============nossas solucoes====================
+
+    #solucoes{
+        article{
+            display: inline-block;
+            max-width: 800px;
+            margin-top: 5vh;
+            vertical-align: top;
+            padding: 20px;
+
+            h1{
+                margin-bottom: 2vh;
+                font-size: 3em;
+            }
+            p{
+                margin-top: -2vh;
+                background-color: transparent;
+                font-size: 1.3em;
+                box-shadow: none;
+            }
+        }
+        img{
+            display: inline-block;
+            width: 500px;
+        }
+    }
+
     @media screen and (max-width: 1200px){
         section{
             grid-template-columns: 1fr 1fr;
+        }
+        #solucoes{
+            article{
+                display: block;
+                margin: auto;
+            }
+            img{
+                display: block;
+                margin: auto;
+                width: 300px;
+            }
         }
     }
     @media screen and (max-width: 800px) {
