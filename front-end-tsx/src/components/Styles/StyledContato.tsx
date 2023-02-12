@@ -12,6 +12,7 @@ export const StyledContato = styled.main`
     box-shadow: 2px 3px 5px black;
 
     form{
+        display: block;
         max-width: 350px;
         min-height: 300px;
         margin: auto;
@@ -41,6 +42,14 @@ export const StyledContato = styled.main`
         padding: 0 7px 0 7px;
         margin: 0px 0px 30px -5px;
         width: 100%;
+        transition: linear 200ms;
+    }
+    form input:focus{
+        border-bottom-color: #51b8b9;
+    }
+    form input.invalido{
+        color: red;
+        border-bottom-color: red;
     }
     form p{
         color: red;

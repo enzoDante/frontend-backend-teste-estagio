@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyledContato } from "../../components/Styles/StyledContato";
+import Modal from "./modal";
 
 export default function Contato(){
 
@@ -11,8 +12,10 @@ export default function Contato(){
     const [erroValidation, setErroValidation] = useState({
         nome: '',
         email: '',
-        telefone: ''
+        telefone: '',
+        todos: ''
     })
+    const [openModal, setOpenModal] = useState<boolean>(false)
 
     const changeValues = (e:React.FormEvent<HTMLInputElement>) => {
         setValues({...values, [e.currentTarget.name]: e.currentTarget.value})
@@ -29,20 +32,20 @@ export default function Contato(){
 
         setErroValidation({...erroValidation, [e.currentTarget.name]: msg})
         
-        console.log(values)
     }
 
     const SubmitForm = (e:React.FormEvent) => {
         e.preventDefault()
+        let id = 'todos'
         if(erroValidation.nome === ' ' && erroValidation.email === ' ' && erroValidation.telefone === ' '){
-            console.log('enviado')
+            setOpenModal(status => !status)
+            setErroValidation({...erroValidation, [id]: ' '})
+        }else{
+            setErroValidation({...erroValidation, [id]: 'Preenche os campos acima!'})
         }
-        console.log('teste')
-        console.log(values)
     }
 
     const formatTel = (e:React.FormEvent<HTMLInputElement>) => {
-        console.log(e.currentTarget.value)
         
         let q = e.currentTarget.value.replace(/\D/g,'')
         
@@ -63,27 +66,42 @@ export default function Contato(){
     }
 
     return(
-        <StyledContato>
-            <form action="" method="post" autoComplete="off" onSubmit={SubmitForm}>
-                <h2>Cadastro</h2>
-                <div>
-                    <label htmlFor="nome">Nome:</label>
-                    <input type="text" name="nome" id="nome" onChange={changeValues}/>
-                    <p>{erroValidation.nome}</p><br />
-                </div>
-                <div>
-                    <label htmlFor="email">E-mail:</label>
-                    <input type="email" name="email" id="email" onChange={changeValues} placeholder='email@gmail.com' />
-                    <p>{erroValidation.email}</p><br />
-                </div>
-                <div>
-                    <label htmlFor="telefone">Telefone:</label>
-                    <input type="tel" name="telefone" id="telefone" onChange={formatTel} placeholder='(xx) xxxxx-xxxx' />
-                    {/* e => {formatTel(e); changeValues(e)} dentro de onChange */}
-                    <p>{erroValidation.telefone}</p><br />
-                </div>
-                <button type="submit">Cadastrar</button>
-            </form>
-        </StyledContato>
+        <>
+            <Modal valores={values} opmd={openModal} somd={setOpenModal}/>
+            <StyledContato>
+                <form action="" method="post" autoComplete="off" onSubmit={SubmitForm}>
+                    <h2>Cadastro</h2>
+                    <div>
+                        <label htmlFor="nome">Nome:</label>
+                        <input type="text" name="nome" id="nome" 
+                            className={(erroValidation.nome !== " " && erroValidation.nome !== "")? "invalido" : undefined} 
+                            onChange={changeValues}/>
+
+                        <p>{erroValidation.nome}</p><br />
+                    </div>
+                    <div>
+                        <label htmlFor="email">E-mail:</label>
+                        <input type="email" name="email" id="email" 
+                            onChange={changeValues} 
+                            className={(erroValidation.email !== " " && erroValidation.email !== "")? "invalido" : undefined} 
+                            placeholder='email@gmail.com' />
+
+                        <p>{erroValidation.email}</p><br />
+                    </div>
+                    <div>
+                        <label htmlFor="telefone">Telefone:</label>
+                        <input type="tel" name="telefone" id="telefone" 
+                            onChange={formatTel} 
+                            className={(erroValidation.telefone !== " " && erroValidation.telefone !== "")? "invalido" : undefined} 
+                            placeholder='(xx) xxxxx-xxxx' />
+                        {/* e => {formatTel(e); changeValues(e)} dentro de onChange */}
+
+                        <p>{erroValidation.telefone}</p><br />
+                    </div>
+                    <button type="submit">Cadastrar</button>
+                    <p>{erroValidation.todos}</p>
+                </form>            
+            </StyledContato>
+        </>
     )
 }
