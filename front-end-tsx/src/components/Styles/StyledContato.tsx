@@ -36,6 +36,7 @@ export const StyledContato = styled.main`
         outline: none;
 
         display: block;
+        background-color: transparent;
         border-bottom: 2px solid #383838e4;
         font-size: 1.1em;
         line-height: 1.5;
