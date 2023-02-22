@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>testar api</h1>
+    <button onclick="cadastro()">cadastro</button>
+    <button onclick="usuarios()">usuarios</button>
+    <button onclick="deletar()">deletar usuario</button>
+    <script>
+        const x = {
+            nome: "enzo dante",
+            email: "asd@gmail.com",
+            telefone: "1200000000",
+            senha: "123456"
+        }
+        let a = JSON.stringify(x)
+
+        function http(url, dados){
+            const xhttp = new XMLHttpRequest()
+            xhttp.open("POST", url, false)
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            xhttp.send(dados)
+            return xhttp.responseText
+        }
+
+        function cadastro(){
+            let vv = http("http://localhost:3001/api/usuario/cadastro", `dados=${a}`)
+            console.log(vv)
+            // const xhttp = new XMLHttpRequest()
+            // xhttp.onload = function(){
+            //     let valor = this.responseText
+            //     console.log(valor)
+            // }
+
+            // xhttp.open("POST", "http://localhost:3001/api/usuario/cadastro")
+            // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            
+            // xhttp.send(`dados=${a}`)
+        }
+
+        function usuarios(){
+            let vv = http("http://localhost:3001/api/getUsuarios", "")
+            console.log(vv)
+        }
+        function deletar(){
+            let vv = http("http://localhost:3001/api/usuario/remove", `id=3`)
+            console.log(vv)
+        }
+    </script>
+</body>
+</html>
