@@ -22,7 +22,7 @@ Abaixo está um exemplo de como deve ser criado o json
 <p>Para utilizar a rota de login, o usuário deve criar um json somente com os dados: email e senha<br>exemplo:</p>
 <img src="https://cdn.discordapp.com/attachments/1079211433713225829/1079214148556165140/image.png"><br>
 
-<p>A variável "json" será enviada para o backend pela url: http://localhost:3001/api/usuario/login<br> O json deve ser enviado da seguinte maneira: "dados=${json}" --> request.send(`dados=${json}`)<br>Pode retornar:
+<p>A variável "json" será enviada para o backend pela url: http://localhost:3001/api/usuario/login<br> O json deve ser enviado da seguinte maneira: "dados=${json}" --> request.send(`dados=${json}`)<br>Pode retornar:<br>
 - 'false' caso usuário inexistente<br>
 - 'string' caso ocorra um erro ao executar o login<br>
 - 'string' caso sucesso ao logar (retorna o token criado pelo jwt!)<br>
@@ -32,7 +32,7 @@ Abaixo está um exemplo de como deve ser criado o json
 <p>Para utilizar a rota de remoção de usuário, deve-se criar um json somente com os dados: token e id<br>exemplo:</p>
 <img src="https://cdn.discordapp.com/attachments/1079211433713225829/1079215852366340267/image.png"><br>
 
-<p>A variável "json" será enviada para o backend pela url: http://localhost:3001/api/usuario/remove<br> O json deve ser enviado da seguinte maneira: "dados=${json}" --> request.send(`dados=${json}`)<br>Pode retornar:
+<p>A variável "json" será enviada para o backend pela url: http://localhost:3001/api/usuario/remove<br> O json deve ser enviado da seguinte maneira: "dados=${json}" --> request.send(`dados=${json}`)<br>Pode retornar:<br>
 - 'false' caso ocorra um erro ao verificar o token<br>
 - 'string' caso sucesso ao deletar usuário<br>
 </p>
@@ -42,8 +42,24 @@ Abaixo está um exemplo de como deve ser criado o json
 token, id, nome, email, telefone e senha<br>exemplo:</p>
 <img src="https://cdn.discordapp.com/attachments/1079211433713225829/1079217234259480659/image.png"><br>
 
-<p>A variável "json" será enviada para o backend pela url: http://localhost:3001/api/usuario/update<br> O json deve ser enviado da seguinte maneira: "dados=${json}" --> request.send(`dados=${json}`)<br>Pode retornar:
+<p>A variável "json" será enviada para o backend pela url: http://localhost:3001/api/usuario/update<br> O json deve ser enviado da seguinte maneira: "dados=${json}" --> request.send(`dados=${json}`)<br>Pode retornar:<br>
 - 'false' caso ocorra um erro ao verificar o token<br>
 - 'string' caso sucesso ao atualizar usuário<br>
 </p>
 <hr>
+
+# Adicionais
+
+## Consultar todos os usuários
+<p>Para usar o getUsuários, deve apenas fazer uma requisição da url: http://localhost:3001/api/getUsuarios <br>
+retornando um array com todos os usuários, exemplo:<br>
+[{"id":1,"created_at":"2023-02-22T15:04:45.019389+00:00","nome":"valor","email":"email@gmail.com","telefone":"111111"},
+{"id":1,"created_at":"2023-02-22T15:04:45.019389+00:00","nome":"valor","email":"email@gmail.com","telefone":"111111"},
+{"id":1,"created_at":"2023-02-22T15:04:45.019389+00:00","nome":"valor","email":"email@gmail.com","telefone":"111111"}]</p>
+
+## Consulta de somente um usuário
+<p>Para usar o getUser, deve apenas fazer uma requisição da url: http://localhost:3001/api/getUser enviando um id especificando o usuário desejado, exemplo: </p><br>
+<img src="https://cdn.discordapp.com/attachments/1079211433713225829/1079221587011698719/image.png"><br>
+
+<p>Retornando um json do usuario, exemplo:<br>
+{"id":1,"created_at":"2023-02-22T15:04:45.019389+00:00","nome":"valor","email":"email@gmail.com","telefone":"111111"}</p>

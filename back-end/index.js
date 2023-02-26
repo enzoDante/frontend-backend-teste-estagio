@@ -127,6 +127,19 @@ app.post('/api/getUsuarios', (req, res) => {
         res.json(e.data)
     })
 })
+app.post('/api/getUser', (req, res) => {
+    sb.from('usuarios').select('id, created_at, nome, email, telefone').eq("id", req.body.id).then((e) => {
+        if(e.data[0] == null)
+            res.send("Usuário inexistente!")
+        else
+            res.json(e.data[0])
+        
+        console.log(e.data)
+    }).catch((erro) => {
+        console.log("Erro ao procurar por usuário")
+        res.send("Erro ao procurar pelo usuário")
+    })
+})
 
 const port = process.env.PORT || 3001
 

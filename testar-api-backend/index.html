@@ -10,6 +10,7 @@
     <h1>testar api</h1>
     <button onclick="cadastro()">cadastro</button>
     <button onclick="usuarios()">usuarios</button>
+    <button onclick="usuario()">um usuário</button>
     <button onclick="deletar()">deletar usuario</button>
     <button onclick="login()">Login</button>
     <button onclick="update()">update</button>
@@ -48,6 +49,11 @@
         function usuarios(){
             let vv = http("http://localhost:3001/api/getUsuarios", "")
             console.log(vv)
+        }
+        function usuario(){
+            const id = 6
+            let user = http("http://localhost:3001/api/getUser", `id=${id}`)
+            console.log(user)
         }
         function deletar(){
             //expira em 1 hora
