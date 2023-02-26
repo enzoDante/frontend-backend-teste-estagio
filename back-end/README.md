@@ -36,3 +36,14 @@ Abaixo está um exemplo de como deve ser criado o json
 - 'false' caso ocorra um erro ao verificar o token<br>
 - 'string' caso sucesso ao deletar usuário<br>
 </p>
+
+## Alteração de dados do usuário
+<p>Para utilizar a rota de update, deve-se criar um json com os mesmo dados de cadastro e com dados adicionais:<br>
+token, id, nome, email, telefone e senha<br>exemplo:</p>
+<img src="https://cdn.discordapp.com/attachments/1079211433713225829/1079217234259480659/image.png"><br>
+
+<p>A variável "json" será enviada para o backend pela url: http://localhost:3001/api/usuario/update<br> O json deve ser enviado da seguinte maneira: "dados=${json}" --> request.send(`dados=${json}`)<br>Pode retornar:
+- 'false' caso ocorra um erro ao verificar o token<br>
+- 'string' caso sucesso ao atualizar usuário<br>
+</p>
+<hr>
