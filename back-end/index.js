@@ -23,9 +23,12 @@ const app = express()
         app.use(express.urlencoded({extended: false}))
 
 
+//rota inicial/padrão
 app.get('/', (req, res) => {
-    res.send('testead2')
+    res.send('API do teste de back end')
 })
+
+//==========cadastro de usuario
 app.post('/api/usuario/cadastro', (req, res) => {
     const json = req.body.dados
     const values = JSON.parse(json)
@@ -38,13 +41,15 @@ app.post('/api/usuario/cadastro', (req, res) => {
     }).then((e) => {
         console.log(e)
         console.log('Cadastro realizado com sucesso!')
-        res.send('deu certo?')
+        res.send('Cadastrado com sucesso!')
     }).catch((err) => {
         console.log(err)
         res.send("erro ao cadastrar usuário")
     })
 
 })
+
+//=======login de usuario
 app.post('/api/usuario/login', (req, res) => {
     const json = req.body.dados
     const values = JSON.parse(json)
@@ -72,6 +77,7 @@ app.post('/api/usuario/login', (req, res) => {
     })
 })
 
+//-===========deletar usuario
 app.post('/api/usuario/remove', (req, res) => {
     const json = req.body.dados
     const values = JSON.parse(json)
@@ -95,6 +101,7 @@ app.post('/api/usuario/remove', (req, res) => {
     }  
 })
 
+//========atualizar dados de usuario
 app.post("/api/usuario/update", (req, res) => {
     const json = req.body.dados
     const values = JSON.parse(json)
@@ -121,12 +128,15 @@ app.post("/api/usuario/update", (req, res) => {
 })
 
 // leitura de dados
+//=======retorno de todos usuarios existentes
 app.post('/api/getUsuarios', (req, res) => {
     sb.from('usuarios').select('id, created_at, nome, email, telefone').then((e) => {
         console.log(e.data)
         res.json(e.data)
     })
 })
+
+//======retorno de somente um usuario especificado
 app.post('/api/getUser', (req, res) => {
     sb.from('usuarios').select('id, created_at, nome, email, telefone').eq("id", req.body.id).then((e) => {
         if(e.data[0] == null)
