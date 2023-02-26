@@ -11,6 +11,8 @@
     <button onclick="cadastro()">cadastro</button>
     <button onclick="usuarios()">usuarios</button>
     <button onclick="deletar()">deletar usuario</button>
+    <button onclick="login()">Login</button>
+    <button onclick="update()">update</button>
     <script>
         const x = {
             nome: "enzo dante",
@@ -48,7 +50,37 @@
             console.log(vv)
         }
         function deletar(){
-            let vv = http("http://localhost:3001/api/usuario/remove", `id=3`)
+            //expira em 1 hora
+            const tt = {
+                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo2LCJub21lIjoiZW56byBkYW50ZSIsImVtYWlsIjoiYXNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NzM3MjYxNywiZXhwIjoxNjc3Mzc2MjE3fQ.5OlV6SWptfGGoT6l87FoOM6CMe2_3-KGVF_aRVP7TSw",
+                id: 2
+            }
+            const t = JSON.stringify(tt)
+            let vv = http("http://localhost:3001/api/usuario/remove", `dados=${t}`)
+            console.log(vv)
+        }
+        function update(){
+            const tt = {
+                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo2LCJub21lIjoiZW56byBkYW50ZSIsImVtYWlsIjoiYXNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NzM3MzM2NiwiZXhwIjoxNjc3Mzc2OTY2fQ.RqKBeznHTjGQ26PqGGmBVCY9tLVXL_8u1U3Mdt3hszc",
+                id: 5,
+                Update: {
+                    nome: "nome teste",
+                    email: "outro@gmail.com",
+                    telefone: "1332432",
+                    senha: "123"
+                }
+            }
+            const t = JSON.stringify(tt)
+            let vv = http("http://localhost:3001/api/usuario/update", `dados=${t}`)
+            console.log(vv)
+        }
+        function login(){
+            const teste = {
+                email: "asd@gmail.com",
+                senha: "123456"
+            }
+            const t = JSON.stringify(teste)
+            let vv = http("http://localhost:3001/api/usuario/login", `dados=${t}`)
             console.log(vv)
         }
     </script>
