@@ -5,13 +5,13 @@
 nome, email, telefone e senha!<br>
 Abaixo está um exemplo de como deve ser criado o json
 </p>
-<script>
-    const object = {
-        nome: "valor",
-        email: "valor",
-        telefone: "12999",
-        senha: "123"
-    }
-    const json = JSON.stringify(object)
-</script>
+```javascript
+const object = {
+    nome: "valor",
+    email: "valor",
+    telefone: "12999",
+    senha: "123"
+}
+const json = JSON.stringify(object)
+```
 <p>A variável</p>
