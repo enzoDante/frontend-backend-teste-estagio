@@ -5,13 +5,8 @@
 nome, email, telefone e senha!<br>
 Abaixo está um exemplo de como deve ser criado o json
 </p>
-```javascript
-const object = {
-    nome: "valor",
-    email: "valor",
-    telefone: "12999",
-    senha: "123"
-}
-const json = JSON.stringify(object)
-```
+<img src="https://cdn.discordapp.com/attachments/1079211433713225829/1079211625107689502/image.png">
+<script>
+    
+</script>
 <p>A variável</p>
